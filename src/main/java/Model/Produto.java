@@ -27,7 +27,7 @@ public class Produto {
 	@Column
 	private String descricao;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name="Id_CategoriaProduto", nullable=false, insertable=false, updatable=false)
 	private CategoriaProduto categoriaProduto;
 	
 	public Produto() {

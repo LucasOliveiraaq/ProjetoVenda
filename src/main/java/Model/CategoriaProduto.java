@@ -19,7 +19,7 @@ public class CategoriaProduto {
 	@Column
 	private String descricao;
 	
-	private CategoriaProduto() {
+	public CategoriaProduto() {
 	}
 	
 	public CategoriaProduto(int id, String nome, String descricao) {
