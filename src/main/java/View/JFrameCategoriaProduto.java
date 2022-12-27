@@ -15,6 +15,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Controller.CategoriaProdutoController;
+import Controller.CategoriaProdutoDAO;
+import Controller.CategoriaProdutoDAOImpl;
 import Model.CategoriaProduto;
 
 
@@ -27,25 +29,15 @@ public class JFrameCategoriaProduto extends JFrame {
 	private JLabel lblDescricao;
 	private JTextArea jTextFieldDescricao;
 	private JButton buttonSalvarCategoria;
-	private CategoriaProdutoController categoriaProdutoController = new CategoriaProdutoController();
+//	private CategoriaProdutoController categoriaProdutoController = new CategoriaProdutoController();
+	private CategoriaProdutoDAO categoriaProdutoDAO = new CategoriaProdutoDAOImpl();
 	private CategoriaProduto categoriaProduto = new CategoriaProduto();
 	private JButton buttonDeletar;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JFrameCategoriaProduto frame = new JFrameCategoriaProduto();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -65,7 +57,6 @@ public class JFrameCategoriaProduto extends JFrame {
 		contentPane.add(getDescricao());
 		contentPane.add(getTextFieldDescricao());
 		contentPane.add(getButtonSalvarCategoria());
-		contentPane.add(getButtonDeletar());
 	}
 	
 	public JLabel getlblCategoriaDeProdutos() {
@@ -126,31 +117,17 @@ public class JFrameCategoriaProduto extends JFrame {
 	public JButton getButtonSalvarCategoria() {
 		if(buttonSalvarCategoria == null) {
 			buttonSalvarCategoria = new JButton();
-			buttonSalvarCategoria.setBounds(110, 200, 129, 22);
+			buttonSalvarCategoria.setBounds(110, 200, 260, 22);
 			buttonSalvarCategoria.addActionListener(e -> salvarCategoriaProduto());
 			buttonSalvarCategoria.setText("Salvar Categoria");
 		}
 		return buttonSalvarCategoria;
 	}
-	
-	public JButton getButtonDeletar() {
-		if(buttonDeletar == null) {
-			buttonDeletar = new JButton();
-			buttonDeletar.setBounds(240, 200, 129, 22);
-			buttonDeletar.addActionListener(e -> deletarCategoriaProduto());
-			buttonDeletar.setText("Deletar");
-		}
-		return buttonDeletar;
-	}
-	
+		
 	public void salvarCategoriaProduto() {
 		categoriaProduto.setNome(jTextFieldNome.getText());
 		categoriaProduto.setDescricao(jTextFieldDescricao.getText());
-		categoriaProdutoController.save(categoriaProduto);
+		categoriaProdutoDAO.save(categoriaProduto);
 	}
 	
-	public void deletarCategoriaProduto() {
-		categoriaProduto.setNome(jTextFieldNome.getText());
-		categoriaProdutoController.remover(categoriaProduto);
-	}
 }
