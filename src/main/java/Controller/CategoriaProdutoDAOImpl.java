@@ -29,4 +29,17 @@ public class CategoriaProdutoDAOImpl implements CategoriaProdutoDAO{
 		emf.close();
 	}
 
+	@Override
+	public CategoriaProduto load(int id) {
+		CategoriaProduto categoriaProduto = null;
+		try {
+			categoriaProduto = em.find(CategoriaProduto.class, id);
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			em.close();
+		}
+		return categoriaProduto;
+	}
+
 }

@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Controller.CategoriaProdutoController;
 import Controller.CategoriaProdutoDAO;
 import Controller.CategoriaProdutoDAOImpl;
 import Model.CategoriaProduto;
@@ -29,19 +28,9 @@ public class JFrameCategoriaProduto extends JFrame {
 	private JLabel lblDescricao;
 	private JTextArea jTextFieldDescricao;
 	private JButton buttonSalvarCategoria;
-//	private CategoriaProdutoController categoriaProdutoController = new CategoriaProdutoController();
 	private CategoriaProdutoDAO categoriaProdutoDAO = new CategoriaProdutoDAOImpl();
 	private CategoriaProduto categoriaProduto = new CategoriaProduto();
-	private JButton buttonDeletar;
 
-	/**
-	 * Launch the application.
-	 */
-
-
-	/**
-	 * Create the frame.
-	 */
 	public JFrameCategoriaProduto() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
